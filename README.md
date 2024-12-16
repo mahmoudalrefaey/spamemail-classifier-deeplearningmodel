@@ -32,6 +32,7 @@ The dataset represents each email as a vector where:
 - **Scikit-learn**: Data scaling (StandardScaler).
 - **NumPy**: Numerical computations.
 - **Matplotlib**: Data visualization (optional).
+- **Streamlit**: Interactive web deployment for predictions.
 
 ---
 
@@ -45,6 +46,14 @@ The dataset represents each email as a vector where:
 
 ---
 
+## 🌐 **Deployment on Streamlit**
+
+The model is now deployed on **Streamlit**, where users can easily input their email text and get a prediction of whether the email is **Spam** or **Not Spam**.  
+You can interact with the live model and try predictions directly on the Streamlit app:  
+**[Spam Email Classifier - Streamlit App](https://your-streamlit-app-link)**
+
+---
+
 ## 📈 **Results**
 - **Training Accuracy**: ~98.1%
 - **Validation Accuracy**: ~98%  
@@ -54,6 +63,7 @@ The dataset represents each email as a vector where:
 ## 📎 **Links**
 - **Dataset**: [Kaggle - Email Spam Classification Dataset](https://www.kaggle.com/datasets/balaka18/email-spam-classification-dataset-csv)
 - **Notebook**: [Spam Email Classifier Notebook on Kaggle](https://www.kaggle.com/code/mahmoudalrefaey/spamemails-classifier-conv1d)
+- **Streamlit App**: [Spam Email Classifier on Streamlit](https://your-streamlit-app-link)
 
 ---
 
@@ -66,4 +76,4 @@ To access the **model.h5** file, please contact me via email at:
 
 ## 📚 **About**
 This project explores the application of deep learning for text classification using **CNN (Conv1D)**. By transforming emails into word frequency vectors, the model learns to distinguish patterns indicative of spam emails.  
-The dataset and implementation offer a solid baseline for further experimentation or deployment.  
+The dataset and implementation offer a solid baseline for further experimentation or deployment.
