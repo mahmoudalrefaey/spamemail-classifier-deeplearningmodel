@@ -57,6 +57,13 @@ The dataset represents each email as a vector where:
 
 ---
 
+## 📧 **Contact for Model Access**
+
+To access the **model.h5** file, please contact me via email at:  
+**dev.mahmoudalrefaey@gmail.com**
+
+---
+
 ## 📚 **About**
 This project explores the application of deep learning for text classification using **CNN (Conv1D)**. By transforming emails into word frequency vectors, the model learns to distinguish patterns indicative of spam emails.  
 The dataset and implementation offer a solid baseline for further experimentation or deployment.  
