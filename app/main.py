@@ -8,6 +8,7 @@ os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
 import streamlit as st
 import re
 import pandas as pd
+import numpy as np
 from collections import Counter
 from tensorflow.keras.models import load_model
 import joblib
@@ -26,7 +27,7 @@ def text_to_vector(text):
     """
     Convert the text to a vector of word frequencies.
     """
-    data = pd.read_csv('dataset\emails.csv')
+    data = pd.read_csv(r'dataset\emails.csv')
     data = data.drop(['Prediction'], axis=1)
     
     word_list = list(data.columns[:-1])
