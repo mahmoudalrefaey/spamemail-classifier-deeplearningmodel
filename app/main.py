@@ -89,7 +89,7 @@ def main():
     Main function of the program.
     """
     page_home()
-    with open("style\style.css") as f:
+    with open("style/style.css") as f:
         st.markdown("<style>{}</style>".format(f.read()), unsafe_allow_html=True)
 if __name__ == '__main__':
     main()
