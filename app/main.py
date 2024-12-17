@@ -7,7 +7,6 @@ os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
 
 import streamlit as st
 import re
-import numpy as np
 import pandas as pd
 from collections import Counter
 from tensorflow.keras.models import load_model
@@ -18,7 +17,7 @@ def scale_email(vector):
     """
     Scale the email vector using the standard scaler from the training data.
     """
-    scaler = joblib.load('main/standard_scaler.pkl')
+    scaler = joblib.load('main\standard_scaler.pkl')
     email_vector = vector.reshape(1, -1)  # Reshape for scaler
     email_vector_scaled = scaler.transform(email_vector)
     return email_vector_scaled
@@ -27,7 +26,7 @@ def text_to_vector(text):
     """
     Convert the text to a vector of word frequencies.
     """
-    data = pd.read_csv('dataset/emails.csv')
+    data = pd.read_csv('dataset\emails.csv')
     data = data.drop(['Prediction'], axis=1)
     
     word_list = list(data.columns[:-1])
@@ -76,7 +75,7 @@ def prediction_page():
     st.write(" ")
     st.markdown("<h4 style='text-align: center; color: white;'>Prediction Results</h4>", unsafe_allow_html=True)
     scaled_emails = scale_email(text_to_vector(st.session_state['text']))
-    model = load_model('main/spam_classifier_model.h5')
+    model = load_model('main\spam_classifier_model.h5')
     prediction = model.predict(scaled_emails)
     if prediction[0] >= 0.5:
         st.write("<span class='not-spam'> Not Spammy Email </span>", unsafe_allow_html=True)
@@ -90,7 +89,7 @@ def main():
     Main function of the program.
     """
     page_home()
-    with open("style/style.css") as f:
+    with open("style\style.css") as f:
         st.markdown("<style>{}</style>".format(f.read()), unsafe_allow_html=True)
 if __name__ == '__main__':
     main()
