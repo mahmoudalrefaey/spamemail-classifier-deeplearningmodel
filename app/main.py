@@ -80,9 +80,9 @@ def prediction_page():
         scaled_emails = scale_email(text_to_vector(st.session_state['text']))
         model = load_model('main\spam_classifier_model.h5')
         prediction = model.predict(scaled_emails)
-    if prediction[0] >= 0.6:
+    if prediction[0] >= 0.60:
         st.write("<span class='not-spam'>Not Spammy Email</span>", unsafe_allow_html=True)
-    elif prediction[0] <= 0.4:
+    elif prediction[0] <= 0.49:
         st.write("<span class='spam'>Spammy Email</span>", unsafe_allow_html=True)
     else:
         st.write("<span class='uncertain'>Uncertain Email Classification</span>", unsafe_allow_html=True)
