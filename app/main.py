@@ -49,8 +49,7 @@ def add_textbox():
     """
     Add a text box to the web page and a submit button.
     """
-    st.markdown("<h3 style='text-align: center; color: white;'>Enter the email text</h3>", unsafe_allow_html=True)
-    text = st.text_area(label="Email Text", height=150)
+    text = st.text_area(label="Enter the Email Content: ", height=150)
     submit_button = st.button("Submit")
     if submit_button:
         st.session_state['text'] = text
@@ -64,7 +63,9 @@ def page_home():
         page_title="SpamSentry",
         page_icon=":email:", 
         layout="centered")
-    st.markdown("<h3 style='text-align: center; color: white;'>Welcome to SpamSentry - Spam Email Classifier</h3>", unsafe_allow_html=True)
+    st.markdown("<h3 style='text-align: center; color: white;'>Welcome to SpamSentry - Spam Email Classifier 📧🚫</h3>", unsafe_allow_html=True)
+    st.write(" ")
+
     add_textbox()
     return
 
@@ -75,15 +76,19 @@ def prediction_page():
     st.write(" ")
     st.write(" ")
     st.markdown("<h4 style='text-align: center; color: white;'>Prediction Results</h4>", unsafe_allow_html=True)
-    scaled_emails = scale_email(text_to_vector(st.session_state['text']))
-    model = load_model('main\spam_classifier_model.h5')
-    prediction = model.predict(scaled_emails)
-    if prediction[0] >= 0.5:
-        st.write("<span class='not-spam'> Not Spammy Email </span>", unsafe_allow_html=True)
-    elif prediction[0] <= 0.5:
-        st.write("<span class='spam'>Spammy Email </span>", unsafe_allow_html=True)
+    with st.spinner("Predicting..."):
+        scaled_emails = scale_email(text_to_vector(st.session_state['text']))
+        model = load_model('main\spam_classifier_model.h5')
+        prediction = model.predict(scaled_emails)
+    if prediction[0] >= 0.6:
+        st.write("<span class='not-spam'>Not Spammy Email</span>", unsafe_allow_html=True)
+    elif prediction[0] <= 0.4:
+        st.write("<span class='spam'>Spammy Email</span>", unsafe_allow_html=True)
+    else:
+        st.write("<span class='uncertain'>Uncertain Email Classification</span>", unsafe_allow_html=True)
+
         
-    st.write("**Confidence of being ham email:**","{:.2f}".format(prediction[0][0] * 100),"%")
+    st.write("**Confidence of being Ham email:**","{:.2f}".format(prediction[0][0] * 100),"%")
 
 def main():
     """

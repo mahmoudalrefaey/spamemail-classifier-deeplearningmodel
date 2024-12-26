@@ -9,3 +9,8 @@
     padding: 0.2rem 0.5rem;
     border-radius: 0.5rem;
 }
+.uncertain {
+    background-color: rgb(245, 183, 12);
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.5rem;
+}
